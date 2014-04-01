@@ -57,7 +57,7 @@ object dependencies {
                                            "org.apache.hadoop" % "hadoop-annotations"                % hadoopVersion exclude("asm", "asm"),
                                            "org.apache.avro"   % "avro-mapred"                       % "1.7.4" classifier "hadoop2")
 
-  def scalaz(scalazVersion: String = "7.0.6") = Seq(
+  def scalaz(scalazVersion: String = "7.1.0-M6") = Seq(
     "org.scalaz"                        %% "scalaz-core"               % scalazVersion,
     "org.scalaz"                        %% "scalaz-iteratee"           % scalazVersion,
     "org.scalaz"                        %% "scalaz-concurrent"         % scalazVersion,
@@ -65,13 +65,13 @@ object dependencies {
     "org.scalaz"                        %% "scalaz-typelevel"          % scalazVersion intransitive(),
     "org.scalaz"                        %% "scalaz-xml"                % scalazVersion intransitive())
 
-  def specs2(specs2Version: String = "2.3.10") = Seq(
+  def specs2(specs2Version: String = "2.3.10-scalaz-7.1.0-SNAPSHOT") = Seq(
     "org.specs2"                        %% "specs2-core"               % specs2Version      % "optional") ++ Seq(
     "org.specs2"                        %% "specs2-mock"               % specs2Version      ,
     "org.specs2"                        %% "specs2-scalacheck"         % specs2Version      ,
     "org.specs2"                        %% "specs2-junit"              % specs2Version      ,
     "org.specs2"                        %% "specs2-html"               % specs2Version      ,
-    "org.specs2"                        %% "specs2-analysis"           % specs2Version      ).map(_ % "test")
+    "org.specs2"                        %% "specs2-analysis"           % specs2Version      ).map(_ % "test" exclude("org.scalaz", "scalaz-core_2.10") exclude("org.scalaz", "scalaz-concurrent_2.10"))
 
   def repl = Seq(
     "org.scala-lang"                    %  "jline"                     % "2.10.3"
@@ -79,7 +79,7 @@ object dependencies {
 
   lazy val resolversSettings = resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
-    Resolver.sonatypeRepo("snaspshots"),
+    Resolver.sonatypeRepo("snapshots"),
     "cloudera"             at "https://repository.cloudera.com/content/repositories/releases",
     "hortonworks-releases" at "http://repo.hortonworks.com/content/repositories/releases")
 }

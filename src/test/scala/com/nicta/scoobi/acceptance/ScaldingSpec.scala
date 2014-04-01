@@ -23,6 +23,8 @@ import math.sqrt
 import Correlations._
 import Movies._
 
+import scalaz.std.anyVal._
+
 class ScaldingSpec extends NictaSimpleJobs {
   "Translation of http://blog.echen.me/2012/02/09/movie-recommendations-and-more-via-mapreduce-and-scalding to Scoobi" >> { implicit sc: SC =>
 

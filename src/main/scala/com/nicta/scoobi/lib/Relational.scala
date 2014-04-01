@@ -287,6 +287,7 @@ object Relational {
     import scalaz.syntax.order._
 
     implicit val grouping = new Grouping[(K, Int)] {
+      import scalaz.std.anyVal._
       def groupCompare(a: (K, Int), b: (K, Int)) =
         implicitly[Grouping[K]].groupCompare(a._1, b._1) |+| a._2 ?|? b._2
     }
