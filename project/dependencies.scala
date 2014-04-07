@@ -41,13 +41,12 @@ object dependencies {
     if (version.contains("cdh3"))      Seq("org.apache.hadoop" % "hadoop-core"   % "0.20.2-cdh3u1",
                                            "org.apache.avro"   % "avro-mapred"   % "1.7.4")
 
-    else if (version.contains("cdh4")) Seq("org.apache.hadoop" % "hadoop-client" % "2.0.0-mr1-cdh4.0.1" exclude("asm", "asm"),
-                                           "org.apache.hadoop" % "hadoop-core"   % "2.0.0-mr1-cdh4.0.1",
+    else if (version.contains("cdh4")) Seq("org.apache.hadoop" % "hadoop-client" % "2.0.0-mr1-cdh4.6.0" exclude("asm", "asm") exclude("org.mortbay.jetty", "jetty-util"),
                                            "org.apache.avro"   % "avro-mapred"   % "1.7.4" classifier "hadoop2")
 
     else if (version.contains("cdh5")) Seq("org.apache.hadoop" % "hadoop-client" % "2.2.0-cdh5.0.0-beta-2" exclude("asm", "asm"),
                                            "org.apache.avro"   % "avro-mapred"   % "1.7.5-cdh5.0.0-beta-2")
-    
+
     else                               Seq("org.apache.hadoop" % "hadoop-common"                     % hadoopVersion exclude("asm", "asm"),
                                            "org.apache.hadoop" % "hadoop-hdfs"                       % hadoopVersion exclude("asm", "asm"),
                                            "org.apache.hadoop" % "hadoop-mapreduce-client-app"       % hadoopVersion exclude("asm", "asm"),
